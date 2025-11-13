@@ -1,21 +1,20 @@
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
-import userRoutes from "./routes/userRoutes.js";
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import userRoutes from "./routes/userRoutes";
 
-dotenv.config();
+dotenv.config(); // Pegar as variaves de ambente do arquivo .env
 
-const app = express();
-
-app.use(cors());
+const app = express(); 
+app.use(cors()); 
 app.use(express.json());
-app.use("/api/users", userRoutes);
+app.use("/api/users", userRoutes)
 
-app.get("/", (req, res) => {
- res.json({ message: "API Biblioteca funcionando" });
-});
+app.get('/', (req, res) => {
+  res.send('Welcome to Biblioteca do Leonam API');
+}   );
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;                  
 app.listen(PORT, () => {
- console.log(`Servidor rodando em http://localhost:${PORT}`);
+  console.log(`Servidor rodando em  ${PORT}`);
 });
